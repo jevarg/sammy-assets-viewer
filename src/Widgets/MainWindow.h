@@ -1,7 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "ResourceFile.h"
+#include "src/ResourceFile.h"
+#include "AssetWidget.h"
 
 #include <string>
 #include <QFileDialog>
@@ -29,7 +30,7 @@ private:
     QWidget *shownWidget = nullptr;
 
     std::vector<ResourceFile *> openResources;
-    std::map<std::string, QWidget *> widgets;
+    std::map<std::string, AssetWidget *> widgets;
 
     void ReadResource(const QString &path);
 };
