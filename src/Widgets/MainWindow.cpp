@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include "../ui/ui_MainWindow.h"
+#include "SoundWidget.h"
 #include "SpriteWidget.h"
 
 #include <QStandardPaths>
@@ -12,9 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
   model = new QStandardItemModel();
   ui->treeView->setModel(model);
 
-  //    widgets["SND"] = new QWidget(ui->frame);
-  //    widgets["SND"]->setStyleSheet("background-color:red;");
-  //    widgets["SND"]->hide();
   QVBoxLayout *frameLayout = new QVBoxLayout();
 
   SpriteWidget *spriteWidget = new SpriteWidget(ui->frame);
@@ -22,19 +20,24 @@ MainWindow::MainWindow(QWidget *parent)
   frameLayout->addWidget(spriteWidget);
   widgets["SPR"] = spriteWidget;
 
+  SoundWidget *soundWidget = new SoundWidget(ui->frame);
+  soundWidget->hide();
+  frameLayout->addWidget(soundWidget);
+  widgets["SND"] = soundWidget;
+
   ui->frame->setLayout(frameLayout);
 
   connect(ui->treeView, &QTreeView::clicked, this, &MainWindow::SelectedAsset);
-    connect(ui->actionOpen_File, &QAction::triggered, [=] {
-      QString filePath = QFileDialog::getOpenFileName(this, "Open resource file", QDir::homePath(), "Resource files (*.res *.RES);;All files(*)");
-      qDebug() << filePath;
-      if (filePath.isEmpty())
-        {
-          return;
-        }
+  connect(ui->actionOpen_File, &QAction::triggered, [=] {
+    QString filePath = QFileDialog::getOpenFileName(this, "Open resource file", QDir::homePath(), "Resource files (*.res *.RES);;All files(*)");
+    qDebug() << filePath;
+    if (filePath.isEmpty())
+      {
+        return;
+      }
 
-      ReadResource(filePath);
-    });
+    ReadResource(filePath);
+  });
 }
 
 MainWindow::~MainWindow()

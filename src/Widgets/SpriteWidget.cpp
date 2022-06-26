@@ -19,9 +19,9 @@ SpriteWidget::SpriteWidget(QWidget *parent) : AssetWidget(parent), ui(new Ui::Sp
 
   ui->setupUi(this);
   connect(ui->widthSlider, &QSlider::sliderMoved, this, &SpriteWidget::onWidthSliderChanged);
-  connect(ui->widthSpinBox, &QSpinBox::valueChanged, this, &SpriteWidget::onWidthSpinBoxChanged);
+  connect(ui->widthSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &SpriteWidget::onWidthSpinBoxChanged);
   connect(ui->heightSlider, &QSlider::sliderMoved, this, &SpriteWidget::onHeightSliderChanged);
-  connect(ui->heightSpinBox, &QSpinBox::valueChanged, this, &SpriteWidget::onHeightSpinBoxChanged);
+  connect(ui->heightSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &SpriteWidget::onHeightSpinBoxChanged);
 }
 
 SpriteWidget::~SpriteWidget()

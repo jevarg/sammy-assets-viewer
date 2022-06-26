@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <QMetaType>
 
 struct HeaderInfo
 {
@@ -29,6 +30,8 @@ struct FileInfo
 
   void *data = nullptr;
 } __attribute__((packed));
+
+Q_DECLARE_METATYPE(FileInfo)
 
 class ResourceFile
 {
