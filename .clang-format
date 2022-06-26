@@ -1,0 +1,13 @@
+Language: Cpp
+BasedOnStyle: GNU
+AllowShortEnumsOnASingleLine: false
+ColumnLimit: 0
+ConstructorInitializerIndentWidth: 2
+ContinuationIndentWidth: 2
+Cpp11BracedListStyle: true
+IndentCaseBlocks: true
+IndentGotoLabels: false
+SortIncludes: CaseSensitive
+SpaceBeforeParens: ControlStatements
+TabWidth: 2
+BreakBeforeBraces: Allman
