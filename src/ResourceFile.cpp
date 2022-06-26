@@ -59,7 +59,7 @@ ResourceFile::ResourceFile(const std::string &path)
   }
 
   ifs.seekg(header->footerAddr);
-  //    std::vector<FileInfo> assets;
+
   int i = 0;
   while (!ifs.eof() && ifs.peek() != EOF)
   {
@@ -71,19 +71,6 @@ ResourceFile::ResourceFile(const std::string &path)
 
   std::cout << std::endl
             << "Found " << std::dec << assets.size() << " files" << std::endl;
-
-  i = 0;
-  for (auto it = assets.begin(); it != assets.end(); ++it)
-  {
-    ++i;
-    if (it->data != nullptr)
-    {
-      std::ofstream outFile(std::to_string(i) + '.' + std::string(it->ext), std::ios::binary);
-      outFile.write(static_cast<char *>(it->data), it->size);
-      outFile.close();
-      free(it->data);
-    }
-  }
 
   ifs.close();
 }

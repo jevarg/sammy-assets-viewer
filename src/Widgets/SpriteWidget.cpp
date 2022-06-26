@@ -51,7 +51,6 @@ SpriteWidget::updateImage()
   img.setColorTable(colorTable);
 
   ui->label->setPixmap(QPixmap::fromImage(img));
-  ui->label->show();
 }
 
 void
